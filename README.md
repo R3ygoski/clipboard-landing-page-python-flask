@@ -24,8 +24,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Frontend Mentor](https://your-solution-url.com)
-- Live Site URL: [Github](https://your-live-site-url.com)
+- Solution URL: [Frontend Mentor](https://www.frontendmentor.io/solutions/clipboard-landing-page-made-with-python-flask-and-tailwind-xfVxJdN1st)
+- Live Site URL: [Github](https://r3ygoski.github.io/clipboard-landing-page-python-flask/)
 
 ## My process
 
