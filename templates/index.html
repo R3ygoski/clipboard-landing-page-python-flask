@@ -1,0 +1,123 @@
+{% import 'macros.html' as macros %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='/images/favicon-32x32.png') }}">
+    <title>Frontend Mentor | Clipboard landing page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              strongCyan: 'hsl(171, 66%, 44%)',
+              darkStrongCyan: 'hsl(171, 66%, 39%)',
+              lightBlue: 'hsl(233, 100%, 69%)',
+              darkLightBlue: 'hsl(233, 100%, 64%)',
+              darkGrayishBlue: 'hsl(210, 10%, 33%)',
+              grayishBlue: 'hsl(201, 11%, 66%)',
+              almostWhite: 'hsl(220, 18%, 97%)'
+            },
+            fontFamily: {
+              mainFont: ['Bai Jamjuree', 'sans-serif']
+            },
+            spacing: {
+              '13': '3.25rem'
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/global.css') }}">
+</head>
+<body class="relative flex flex-col items-center w-full font-mainFont overflow-x-hidden bg-almostWhite">
+    <picture class="absolute w-screen top-0">
+      <source media="(min-width: 768px)" srcset="{{ url_for('static', filename='images/bg-header-desktop.png') }}"/>
+      <img class="w-screen" src="{{ url_for('static', filename='images/bg-header-mobile.png') }}" alt="">
+    </picture>
+    <main class="pt-32 text-center bg-white">
+        <figure>
+            <img class="mx-auto" src="{{ url_for('static', filename='images/logo.svg') }}" alt="Logo of Clipboard Site"/>
+        </figure>
+        <article class="flex flex-col items-center px-8 lg:px-0">
+            <section class="flex flex-col items-center mt-13 gap-4">
+                <h1 class="text-center text-[2rem] lg:text-[2.75rem]">A history of everything you copy</h1>
+                <p class="lg:w-4/6 lg:text-[1.225rem]">Clipboard allows you to track and organize everything you copy. Instantly access your clipdboard on all your devices</p>
+                <div class="lg:flex lg:gap-4">
+                  {{ macros.button('iOS') }}
+                  {{ macros.button('Mac') }}
+                </div>
+            </section>
+            <section class="mt-40 lg:flex lg:flex-col lg:items-center lg:mt-36">
+                <h2 class="text-3xl lg:text-4xl">Keep track of your snippets</h2>
+                <p class="lg:w-7/12 lg:mt-4 lg:text-[1.225rem]">Clipboard instantly stores any item you copy in the cloud, meaning you can access your snippets immediately on all your devices. Our Mac and iOS apps will help you organize everything.</p>
+            </section>
+            <section class="mt-16 lg:flex lg:w-full lg:mt-20 lg:gap-4 lg:text-left">
+                <div class="lg:relative lg:w-7/12">
+                  <img class="lg:absolute lg:left-[-40px]" src="{{ url_for('static', filename='images/image-computer.png') }}" alt="Image of a Computer Monitor with a green check icon"/>
+                </div>
+                <div class="flex flex-col mt-16 gap-12 md:mt-0 xl:mt-16 lg:gap-16">
+                  {% for feature in features_1 %}                  
+                  {{ macros.featuresOne(feature.title, feature.text) }}
+                  {% endfor %}
+                </div>
+            </section>
+            <section class="mt-40 lg:mt-64 lg:flex lg:flex-col lg:items-center">
+              <h2 class="text-3xl lg:text-4xl">Access Clipboard Anywhere</h2>
+              <p class="mt-4 lg:w-9/12 lg:text-[1.225rem]">Whether you’re on the go, or at your computer, you can access all your Clipboard snippets in a few simple clicks.</p>
+              <img class="mt-16" src="{{ url_for('static', filename='images/image-devices.png')}}" alt="Image of Two Devices, a Mobile device and a Tabled device, both with a green check icon"/>
+            </section>
+            <section  class="mt-28">
+              <h2 class="text-3xl lg:text-4xl">Supercharge your workflow</h2>
+              <p class="mt-2 lg:text-[1.225rem]">We’ve got the tools to boost your productivity.</p>
+              <div class="mt-6 lg:flex lg:items-center lg:mt-2 lg:px-36">
+                {% for feature in features_2 %}                  
+                {{ macros.featuresTwo( feature.title, feature.text, feature.image) }}
+                {% endfor %}
+              </div>
+            </section>
+            <section class="flex flex-col items-center mt-20 lg:flex-row lg:justify-around lg:w-full lg:px-28">
+              {% for brand in brands %}                  
+              {{ macros.brands( brand.brand, brand.alt) }}
+              {% endfor %}
+            </section>
+            <section class="mt-44 lg:flex lg:flex-col lg:items-center">
+              <h2 class="text-3xl lg:text-4xl">Clipboard for iOS and Mac OS</h2>
+              <p class="w-[98%] lg:w-4/6 lg:text-[1.225rem] lg:mt-8">Available for free on the App Store. Download for Mac or iOS, sync with iCloud and you’re ready to start adding to your clipboard.</p>
+              <div class="mt-8 md:flex md:justify-between lg:mt-2 lg:gap-4">
+                {{ macros.button('iOS') }}
+                {{ macros.button('Mac') }}
+              </div>
+            </section>
+        </article>
+        <footer class="flex flex-col items-center mt-[10.5rem] p-16 bg-almostWhite text-darkGrayishBlue lg:flex-row lg:items-center lg:h-28 lg:py-2 lg:pl-40 lg:pr-24">
+          <div class="lg:w-[6%]">
+            <img class="w-14 mx-auto" src="{{ url_for('static', filename='images/logo.svg')}}" alt="Logo of Clipboard Site">
+          </div>
+          <div class="flex flex-col text-[1.125rem] mt-12 gap-5 lg:flex lg:flex-wrap lg:w-[52%] lg:h-full lg:text-left  lg:mt-8 lg:ml-32">
+            {{ macros.links('#','FAQs') }}
+            {{ macros.links('#','Contact Us') }}
+            {{ macros.links('#','Privacy Policy') }}
+            {{ macros.links('#','Press Kit') }}
+            {{ macros.links('#','Install Guide') }}
+          </div>
+          <div class="flex justify-around w-[300px] mt-14 px-12 lg:w-1/5 lg:mt-0 lg:ml-[7.5rem]">
+            {{ macros.brandIcons('Facebook') }}
+            {{ macros.brandIcons('Twitter') }}
+            {{ macros.brandIcons('Instagram') }}
+          </div>
+        </footer>
+    </main>
+    <div class="absolute bottom-[-120px] mx-auto">
+      <p class="text-darkGrayishBlue text-xl">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+        Coded by <a href="https://github.com/R3ygoski">Bernardo Poggioni</a>.
+      </p>
+    </div>
+</body>
+</html>

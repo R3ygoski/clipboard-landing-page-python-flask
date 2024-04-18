@@ -1,0 +1,24 @@
+h1,h2,h3 {
+  color: hsl(210, 10%, 33%);
+  font-weight: 600 !important;
+}
+
+p {
+  color: hsl(201, 11%, 66%);
+}
+
+a:hover {
+  color: hsl(171, 66%, 44%);
+}
+
+svg {
+  fill: hsl(210, 10%, 33%);
+}
+
+a:hover svg {
+  fill: hsl(171, 66%, 44%);
+}
+
+button:hover {
+  filter: saturate(90%) brightness(110%);
+}
